@@ -1,0 +1,7 @@
+OverlayBAC - a series of python files that enable us to take a photo using the Bug2v4l pythom module, take an approximate BAC reading using the DrinkShield, and overlay the reading onto the image. 
+
+serialmon.py - the "main" class which is responsible for listening to /dev/ttyACM0 (arduino UNO) for serial messages.  Upon reading a "P" command, serialmon takes a photo using OverlayBAC.py.  Once the photo has completed, serialmon retrieves the BAC by writing out "C" to the serial port, and retrieves the approximate BAC reading as prefixed by "H"
+
+filequeueworker.py - after a photo is taken, serialmon adds the filename to the filequeue within the filequeueworker.  The filequeueworker exists as a seperate thread, waiting for the filequeue to be filled with items, and processing each item.  The current implementation executes overlayBAC on each file, and then has some code to upload the completed file to an external server for syndication.
+
+OverlayBAC.py - this file contains the code to take a single image and the code that preforms the overlay.

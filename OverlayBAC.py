@@ -8,10 +8,12 @@ def takePicture(filename):
            raw_fmt=bg.format(2048,1536, bg.V4L2_PIX_FMT_YUYV),
            resizer_fmt=bg.format(2048,1536))
    
+   bg.set_ctrl(bg.V4L2_CID_EXPOSURE, 255) # turn up exposure level
    # start the image stream
    bg.start()
    
    bg.flush()
+   bg.set_ctrl(bg.V4L2_CID_FLASH_STROBE, 2) # turn up exposure level
    yuv_img = bg.grab()
    bg.saveimg(yuv_img, filename)
    print "[OVERLAY]  Grabbed ", filename
