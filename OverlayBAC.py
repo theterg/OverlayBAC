@@ -14,7 +14,7 @@ def takePicture(filename):
    bg.flush()
    yuv_img = bg.grab()
    bg.saveimg(yuv_img, filename)
-   print "Grabbed", filename
+   print "[OVERLAY]  Grabbed ", filename
    bg.stop()
    bg.close()
    
@@ -31,7 +31,7 @@ def overlayBAC(filename, bac):
    )
    im = Image.open(filename)
    draw_image = ImageDraw.Draw(im)
-   draw_image.text((0, 0), bac, font=font, fill=color)
+   draw_image.text((0, 0), str(bac), font=font, fill=color)
    im.save(filename, "JPEG")
    
 if __name__ == '__main__':
