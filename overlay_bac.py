@@ -32,7 +32,7 @@ def overlayBAC(filename, bac):
    im = Image.open(filename)
    draw_image = ImageDraw.Draw(im)
    draw_image.text((0, 0), bac, font=font, fill=color)
-   im.save(filename, "PNG")
+   im.save(filename, "JPEG")
    
 if __name__ == '__main__':
    takePicture(sys.argv[1])
